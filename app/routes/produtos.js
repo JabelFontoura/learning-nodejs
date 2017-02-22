@@ -11,7 +11,7 @@ module.exports = function(app){
 			    done();
 			    if (err) return console.error('Error running query', err);
 			    
-			    response.render('produtos/lista', {lista:result});
+			    response.render('produtos/lista', {lista:result.rows});
 			  });
 
 		});
