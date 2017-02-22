@@ -7,13 +7,11 @@ module.exports = function(app){
 			if(err){
 				return console.error("Error fetching client from pool", err);
 			}
-			console.log("Conctado com o banco");
 			client.query('SELECT * FROM livros', function(err, result) {
 			    done();
-			    if (err) {
-			      return console.error('Error running query', err);
-			    }
-			    response.send(result.rows);
+			    if (err) return console.error('Error running query', err);
+			    
+			    response.render('produtos/lista', {lista:result});
 			  });
 
 		});
