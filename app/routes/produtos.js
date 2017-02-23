@@ -1,19 +1,16 @@
+var dbConnection = require('../infra/connectionFactory');
+
 module.exports = function(app){
 	app.get('/produtos', function(request, response){
-		var pg = require('pg');
-		var conStrig = "postgres://postgres:jabel@localhost/CasaDoCodigo";
+		var client = dbConnection();
 
-		pg.connect(conStrig, function(err, client, done){
-			if(err){
-				return console.error("Error fetching client from pool", err);
-			}
 			client.query('SELECT * FROM livros', function(err, result) {
-			    done();
-			    if (err) return console.error('Error running query', err);
+			    if (err) return console.error('Erro ao executar a query.', err);
 			    
 			    response.render('produtos/lista', {lista:result.rows});
 			  });
 
+			//client.end();
+
 		});
-	});
 }
