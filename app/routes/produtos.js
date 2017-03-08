@@ -38,6 +38,7 @@ module.exports = function(app){
 					json: function() {
 						response.status(400).json(errors);
 					}
+				});
 			console.log(errors);
 			return;
 		}
