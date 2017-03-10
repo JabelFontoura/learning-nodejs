@@ -1,6 +1,9 @@
-var port = 3000;
 var app = require('./config/express')();
+var http = require("http").Server(app);
+var io = require('socket.io')(http);
 
-app.listen(port, function(){
-	console.log("Servidor online em localhost:" + port);
+app.set('io', io);
+
+http.listen(3000, function(){
+	console.log("Servidor online em localhost:3000");
 });
