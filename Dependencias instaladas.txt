@@ -1,6 +1,0 @@
-ExpressJS 
-EJS
-Nodemon
-Express-Load
-Body-Parser
-Express-Validator
