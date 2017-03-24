@@ -5,7 +5,11 @@ module.exports = (app) => {
 
     app.post('/pagamentos/pagamento', (request, response) => {
         const pagamento = request.body;
-        console.log(pagamento);
-        response.send('OkKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK');
+
+        console.log('Processando requisição de um novo pagamento');
+
+        pagamento.status = 'CRIADO';
+        pagamento.data = new Date();
+        response.send(pagamento);
     });
 };
